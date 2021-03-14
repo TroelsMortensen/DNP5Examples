@@ -1,0 +1,93 @@
+﻿@using System.Net
+@using System.Diagnostics
+<h3>AsyncDemoComponent</h3>
+
+<button class="btn btn-primary" @onclick="ExecuteSync">Sync</button>
+<button class="btn btn-primary" @onclick="ExecuteSingleAsync">Single async</button>
+<button class="btn btn-primary" @onclick="ExecuteSlowAsync">Async slow</button>
+<button class="btn btn-primary" @onclick="ExecuteAsync">Async fast</button>
+<br/>
+<textarea cols="50" rows="25">
+@result
+</textarea>
+
+
+@code {
+    private string result;
+    private string[] urls = {"https://www.yahoo.com", 
+        "https://www.google.com", 
+        "https://www.microsoft.com", 
+        "https://www.bing.com", 
+        "https://www.eb.dk", 
+        "https://www.tutorialspoint.com/index.htm", 
+        "https://www.cnn.com",
+        "https://www.codeproject.com",
+        "https://www.stackoverflow.com",
+        "https://www.reddit.com",
+        "https://www.github.com"
+    };
+    
+
+    private void ExecuteSync()
+    {
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+        
+        result = "";
+        foreach (string url in urls)
+        {
+            WebClient client = new WebClient();
+            string downloaded = client.DownloadString(url);
+            result += $"{downloaded.Length} \n";
+        }
+        result += "Execution: " + sw.ElapsedMilliseconds + " ms";
+    }
+
+    private async Task ExecuteSingleAsync()
+    {
+        result = "";
+        WebClient client = new WebClient();
+        string downloaded = await client.DownloadStringTaskAsync("https://www.google.com");
+        result += $"{downloaded.Length} \n";
+    }
+
+    private async Task ExecuteSlowAsync()
+    {
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+        
+        result = "";
+        foreach (string url in urls)
+        {
+            WebClient client = new WebClient();
+            string downloaded = await client.DownloadStringTaskAsync(url);
+            result += $"{downloaded.Length} \n";
+        }
+        result += "Execution: " + sw.ElapsedMilliseconds + " ms";
+    }
+
+    private async Task ExecuteAsync()
+    {
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+        
+        result = "";
+        List<Task<string>> tasks = new List<Task<string>>();
+        foreach (string url in urls)
+        {
+            WebClient client = new WebClient();
+            Task<string> downloaded = client.DownloadStringTaskAsync(url);
+            tasks.Add(downloaded);
+        }
+
+        while (tasks.Any())
+        {
+            Task<string> finishedTask = await Task.WhenAny(tasks);
+            string downloaded = await finishedTask;
+            tasks.Remove(finishedTask);
+            result += $"{downloaded.Length} \n";
+        }
+        result += "Execution: " + sw.ElapsedMilliseconds + " ms";
+    }
+
+}

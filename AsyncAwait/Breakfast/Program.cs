@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Breakfast
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            SyncBreakfast.MakeSynchronous();
+            await AsyncBreakfast.MakeAsynch();
             Console.WriteLine(sw.ElapsedMilliseconds);
         }
     }

@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Breakfast", "AsyncAwait\Bre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExample", "AsyncAwait\SimpleExample\SimpleExample.csproj", "{19698009-9BFE-4ADB-A9DB-1CA35D0E4C70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAsyncDemo", "Blazor\BlazorAsyncDemo\BlazorAsyncDemo.csproj", "{A49F6F98-0A05-46AE-A91A-432BDD02F92B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,7 @@ Global
 		{BEABD9B6-DD71-42E9-A0BD-6BBAA4C3988B} = {831FB36B-1AC6-45E1-9AC2-B8796F1503C5}
 		{C973005D-136F-417C-9185-082197FF8BAD} = {7BE5BE73-D22B-426D-BC86-697A396062A8}
 		{19698009-9BFE-4ADB-A9DB-1CA35D0E4C70} = {7BE5BE73-D22B-426D-BC86-697A396062A8}
+		{A49F6F98-0A05-46AE-A91A-432BDD02F92B} = {831FB36B-1AC6-45E1-9AC2-B8796F1503C5}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{360361BF-75CC-4326-88C7-97BC5722F36B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -108,5 +111,9 @@ Global
 		{19698009-9BFE-4ADB-A9DB-1CA35D0E4C70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19698009-9BFE-4ADB-A9DB-1CA35D0E4C70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19698009-9BFE-4ADB-A9DB-1CA35D0E4C70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A49F6F98-0A05-46AE-A91A-432BDD02F92B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A49F6F98-0A05-46AE-A91A-432BDD02F92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A49F6F98-0A05-46AE-A91A-432BDD02F92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A49F6F98-0A05-46AE-A91A-432BDD02F92B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
